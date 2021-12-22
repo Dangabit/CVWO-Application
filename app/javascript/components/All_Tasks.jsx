@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Tasks() {
   const [tasks, setTasks] = useState([]);
+  let navigate = useNavigate();
   useEffect(() => {
     const url = "/api/v1/tasks/index";
     fetch(url)
@@ -12,7 +13,8 @@ function Tasks() {
         }
         throw new Error("Network response was not ok.");
       })
-      .then(response => setTasks(response));
+      .then(response => setTasks(response))
+      .catch(() => navigate("/"));
   }, []);
 
   const allTasks = tasks.map((task, index) => (
@@ -21,7 +23,7 @@ function Tasks() {
         <div className="card-body">
           <h5 className="card-title">{task.name}</h5>
           <p>{task.deadline}</p>
-          <Link to={'/task/${task.id}'} className="btn">
+          <Link to={`/task/${task.id}`} className="btn">
             Open Task
           </Link>
         </div>
@@ -33,7 +35,7 @@ function Tasks() {
       <h4>
         There are no tasks!
       </h4>
-      <Link to="/new_recipe" className="btn">Create one!</Link>   
+      <Link to="/createTask" className="btn">Create one!</Link>   
     </div>
   );
 
@@ -47,7 +49,7 @@ function Tasks() {
       <div className="py-5">
         <main className="container">
           <div className="text-right mb-3">
-            <Link to="/" className="btn">
+            <Link to="/createTask" className="btn">
               Create New Recipe
             </Link>
           </div>
