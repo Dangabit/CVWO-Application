@@ -19,10 +19,13 @@ function Tasks() {
 
   const allTasks = tasks.map((task, index) => (
     <div key={index} className="col-md-12 col-lg-12">
-      <div className="card my-4">
+      <div className="card my-4 card-custom">
         <div className="card-body">
-          <h5 className="card-title">{task.name}</h5>
-          <p>{task.deadline}</p>
+          <h3 className="card-title">{task.name}</h3>
+          <div className="d-flex justify-content-between">
+            <p>Deadline: {task.deadline}</p>
+            <p>Status: {task.status ? "Complete" : "Incomplete"}</p>
+          </div>
           <Link to={`/task/${task.id}`} className="btn">
             Open Task
           </Link>
@@ -31,16 +34,15 @@ function Tasks() {
     </div>
   ));
   const noTask = (
-    <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
+    <div className="vw-100 vh-50 d-flex align-items-center justify-content-center flex-column">
       <h4>
         There are no tasks!
       </h4>
-      <Link to="/createTask" className="btn">Create one!</Link>   
     </div>
   );
 
   return(
-    <>
+    <div className="back-custom vh-100">
       <section className="jumbotron jumbotron-fluid text-center">
         <div className="container py-5">
           <h1 className="display-4">Mega Task List</h1>
@@ -48,20 +50,20 @@ function Tasks() {
       </section>
       <div className="py-5">
         <main className="container">
-          <div className="text-right mb-3">
+          <div className="text-right mb-4">
             <Link to="/createTask" className="btn">
-              Create New Recipe
+              Create Task
             </Link>
           </div>
           <div className="row">
             {tasks.length > 0 ? allTasks : noTask}
           </div>
-          <Link to="/" className="btn">
+          <Link to="/" className="btn mt-4">
             Home
           </Link>
         </main>
       </div>
-    </>
+    </div>
   );
 }
 

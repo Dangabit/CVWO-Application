@@ -1,14 +1,19 @@
-.middle {
-  background-color: beige;
-  flex-direction: column;
+.back-custom {
+  background-color: #eaf4d3;
 }
 
 .btn {
   border-radius: 5%;
-  background-color: #7fffd4 !important;
+  background-color: #93c0a4 !important;
   width: fit-content;
 }
 
 .btn:hover {
-  background-color: rgb(65, 202, 157) !important;
+  background-color: #688b76 !important;
+}
+
+.card-custom {
+  background-color: #f4f7ee !important;
+  border: solid !important;
+  border-width: 1px !important;
 }

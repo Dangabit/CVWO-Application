@@ -5,7 +5,6 @@ Node 16.13.1
 PostgreSQL 12.9
 
 Web App Plans:
-- Deleting a task
 - Modifying a task
 - Filtered view of tasks by tags
 - Revamp the look of the webpages (bootstrap)

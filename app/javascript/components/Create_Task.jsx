@@ -45,55 +45,54 @@ function New_Task() {
     return (
         <div className="container mt-5">
             <div className="row">
-            <div className="col-sm-12 col-lg-6 offset-lg-3">
-                <h1 className="font-weight-normal mb-5">
-                Add a new recipe to our awesome recipe collection.
-                </h1>
-                <form onSubmit={submit}>
-                <div className="form-group">
-                    <label htmlFor="taskname">Name</label>
-                    <input
-                    type="text"
-                    name="name"
-                    id="taskname"
-                    className="form-control"
-                    required
-                    onChange={nameChange}
-                    />
+                <div className="col-sm-12 col-lg-6 offset-lg-3">
+                    <h1 className="font-weight-normal mb-5">
+                    Create a task.
+                    </h1>
+                    <form onSubmit={submit}>
+                        <div className="form-group">
+                            <label htmlFor="taskname">Name</label>
+                            <input
+                            type="text"
+                            name="name"
+                            id="taskname"
+                            className="form-control"
+                            required
+                            onChange={nameChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="taskdesc">Description</label>
+                            <input
+                            type="text"
+                            name="description"
+                            id="taskdesc"
+                            className="form-control"
+                            onChange={descChange}
+                            />
+                            <small id="tip" className="form-text text-muted">
+                            Describe the task! Or formulate a plan!
+                            </small>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="taskdead">Deadline</label>
+                            <input
+                            type="date"
+                            name="deadline"
+                            id="taskdead"
+                            className="form-control"
+                            required
+                            onChange={deadChange}
+                            />
+                        </div>
+                        <button type="submit" className="btn custom-button mt-3">
+                            Create Task
+                        </button>
+                        <Link to="/tasks" className="btn mt-3">
+                            Back to Tasks
+                        </Link>
+                    </form>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="taskdesc">Description</label>
-                    <input
-                    type="text"
-                    name="description"
-                    id="taskdesc"
-                    className="form-control"
-                    required
-                    onChange={descChange}
-                    />
-                    <small id="ingredientsHelp" className="form-text text-muted">
-                    Separate each ingredient with a comma.
-                    </small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="taskdead">Deadline</label>
-                    <input
-                    type="date"
-                    name="deadline"
-                    id="taskdead"
-                    className="form-control"
-                    required
-                    onChange={deadChange}
-                    />
-                </div>
-                <button type="submit" className="btn custom-button mt-3">
-                    Create Task
-                </button>
-                <Link to="/tasks" className="btn mt-3">
-                    Back to Tasks
-                </Link>
-                </form>
-            </div>
             </div>
         </div>
     );
