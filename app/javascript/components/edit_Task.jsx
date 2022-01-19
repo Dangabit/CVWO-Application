@@ -1,25 +1,41 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-function New_Task() {
+function editTask() {
+    const { id } = useParams();
     const [name, setName] = useState('');
     const [description, setDesc] = useState('');
     const [deadline, setDeadline] = useState('');
     const [tags, setTags] = useState([]);
+    let navigate = useNavigate();
+    useEffect(() => {
+        const url = `/api/v1/show/${id}`;
+        fetch(url)
+        .then(response => {
+            if (response.ok) {
+            return response.json();
+            }
+            throw new Error("Network response was not ok.");
+        })
+        .then(response => {
+            setName(response.name);
+            setDesc(response.description);
+            setDeadline(response.deadline);
+        })
+        .catch(() => navigate("/"));
+    }, []);
 
     const nameChange = name => setName(name.target.value);
     const descChange = desc => setDesc(desc.target.value);
     const deadChange = dead => setDeadline(dead.target.value);
     const tagsChange = tags => setTags(tags.target.value);
 
-    let navigate = useNavigate();
-
     function submit(e) {
         e.preventDefault();
         if (name.length == 0 || deadline.length == 0) {
             return;
         }
-        const url = "/api/v1/tasks/create";
+        const url = `/api/v1/update/${id}`;
         const token = document.querySelector('meta[name="csrf-token"]').textContent;
         const body = {
             name,
@@ -28,7 +44,7 @@ function New_Task() {
             tags
         };
         fetch(url, {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 "X-CSRF-Token": token,
                 "Content-Type": "application/json"
@@ -48,7 +64,7 @@ function New_Task() {
             <div className="row">
                 <div className="col-sm-12 col-lg-6 offset-lg-3">
                     <h1 className="font-weight-normal mb-5">
-                    Create a task.
+                    Editting task {name}.
                     </h1>
                     <form onSubmit={(e) => submit(e)}>
                         <div className="form-group">
@@ -58,8 +74,8 @@ function New_Task() {
                             name="name"
                             id="taskname"
                             className="form-control"
-                            required
                             onChange={nameChange}
+                            value={name}
                             />
                         </div>
                         <div className="form-group">
@@ -70,6 +86,7 @@ function New_Task() {
                             id="taskdesc"
                             className="form-control"
                             onChange={descChange}
+                            value={description}
                             />
                             <small id="tip" className="form-text text-muted">
                             Describe the task! Or formulate a plan!
@@ -82,15 +99,15 @@ function New_Task() {
                             name="deadline"
                             id="taskdead"
                             className="form-control"
-                            required
                             onChange={deadChange}
+                            value={deadline}
                             />
                         </div>
                         <button type="submit" className="btn custom-button mt-3">
-                            Create Task
+                            Edit Task
                         </button>
-                        <Link to="/tasks" className="btn mt-3">
-                            Back to Tasks
+                        <Link to={`/task/${id}`} className="btn mt-3">
+                            Back
                         </Link>
                     </form>
                 </div>
@@ -99,4 +116,4 @@ function New_Task() {
     );
 }
 
-export default New_Task;
+export default editTask;

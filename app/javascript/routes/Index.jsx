@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import Tasks from "../components/All_Tasks";
 import Task from "../components/single_task";
 import Create_Task from "../components/Create_Task";
+import Edit_Task from "../components/edit_Task";
 
 export default (
   <BrowserRouter>
@@ -12,6 +13,7 @@ export default (
       <Route path="/tasks" element={<Tasks />} />
       <Route path="/task/:id" element={<Task />} />
       <Route path="/createTask" element={<Create_Task />} />
+      <Route path="/editTask/:id" element={<Edit_Task />} />
     </Routes>
   </BrowserRouter>
 );

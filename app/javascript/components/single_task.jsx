@@ -69,9 +69,14 @@ function Single_Task() {
                 </button>
                 </div>
             </div>
-            <Link to="/tasks" className="btn">
-                Back to tasks
-            </Link>
+                <Link to="/tasks" className="btn">
+                    Back to tasks
+                </Link>
+            </div>
+            <div>
+                <Link to={`/editTask/${id}`} className="btn">
+                    Edit Task
+                </Link>
             </div>
         </div>
     );

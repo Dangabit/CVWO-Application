@@ -13,6 +13,15 @@ class Api::V1::TasksController < ApplicationController
     end
   end
 
+  def update
+    task = Task.find(params[:id])
+    if task.update(task_params)
+      render json: task
+    else
+      render json: task.error
+    end
+  end
+
   def show
     if task
       render json: task
@@ -29,7 +38,7 @@ class Api::V1::TasksController < ApplicationController
   private
 
   def task_params
-    params.permit(:name, :description, :deadline, :status, :tags)
+    params.require(:task).permit(:name, :description, :deadline, :status, :tags)
   end
 
   def task
