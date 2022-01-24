@@ -6,7 +6,6 @@ PostgreSQL 12.9
 
 Web App Plans:
 - Filtered view of tasks by tags
-- Revamp the look of the webpages (bootstrap)
 - Implement CSRF token back (temporarily disabled)
 - Implement security measures if needed
 
@@ -16,3 +15,4 @@ Currently Done:
 - Individual task webpage
 - Task creation webpage
 - Task modify webpage
+- Styling
