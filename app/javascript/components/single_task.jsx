@@ -37,49 +37,43 @@ function Single_Task() {
         .catch(error => console.log(error.message));
     }
 
-    let description = task.description;
     const status = task.status ? "Completed" : "Incomplete";
     return (
-        <div className="">
+        <div className="back-custom vh-100">
             <div className="hero position-relative d-flex align-items-center justify-content-center">
-            <div className="overlay bg-dark position-absolute" />
-            <h1 className="display-4 position-relative text-white">
-                {task.name}
-            </h1>
+                <h1 className="display-4 position-relative mt-5">
+                    {task.name}
+                </h1>
             </div>
-            <div className="container py-5">
-            <div className="row">
-                <div className="col-sm-12 col-lg-3">
-                <ul className="list-group">
-                    <h5 className="mb-2">Description</h5>
-                    {description}
-                </ul>
-                </div>
-                <div className="col-sm-12 col-lg-7">
-                    <h5 className="mb-2">Deadline</h5>
-                    <p>{task.deadline}</p>
+            <div className="container py-5 d-flex flex-column">
+                <div className="row d-flex">
+                    <div className="col-sm-8 col-lg-8">
+                        <h5 className="mb-2">Description</h5>
+                        {task.description}
+                    </div>
+                    <div className="col-sm-4 col-lg-4 ms-auto">
+                        <h5 className="mb-2">Deadline</h5>
+                        <p>{task.deadline}</p>
+                    </div>
                 </div>
                 <div className="col-sm-12 col-lg-7">
                     <h5 className="mb-2">Status</h5>
                     <p>{status}</p>
                 </div>
-                <div className="col-sm-12 col-lg-2">
-                <button type="button" className="btn btn-danger" onClick={deleteTask}>
-                    Delete Task
-                </button>
+                <div className="d-flex">
+                    <Link to="/tasks" className="btn">
+                        Back to tasks
+                    </Link>
+                    <Link to={`/editTask/${id}`} className="btn mx-3">
+                        Edit Task
+                    </Link>
+                    <button type="button" className="btn btn-danger text-black ms-auto" onClick={deleteTask}>
+                        Delete Task
+                    </button>
                 </div>
-            </div>
-                <Link to="/tasks" className="btn">
-                    Back to tasks
-                </Link>
-            </div>
-            <div>
-                <Link to={`/editTask/${id}`} className="btn">
-                    Edit Task
-                </Link>
             </div>
         </div>
     );
-    }
+}
 
 export default Single_Task;

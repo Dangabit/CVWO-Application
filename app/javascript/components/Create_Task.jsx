@@ -44,56 +44,54 @@ function New_Task() {
     }
 
     return (
-        <div className="container mt-5">
-            <div className="row">
-                <div className="col-sm-12 col-lg-6 offset-lg-3">
-                    <h1 className="font-weight-normal mb-5">
-                    Create a task.
-                    </h1>
-                    <form onSubmit={(e) => submit(e)}>
-                        <div className="form-group">
-                            <label htmlFor="taskname">Name</label>
-                            <input
-                            type="text"
-                            name="name"
-                            id="taskname"
-                            className="form-control"
-                            required
-                            onChange={nameChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="taskdesc">Description</label>
-                            <input
-                            type="text"
-                            name="description"
-                            id="taskdesc"
-                            className="form-control"
-                            onChange={descChange}
-                            />
-                            <small id="tip" className="form-text text-muted">
-                            Describe the task! Or formulate a plan!
-                            </small>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="taskdead">Deadline</label>
-                            <input
-                            type="date"
-                            name="deadline"
-                            id="taskdead"
-                            className="form-control"
-                            required
-                            onChange={deadChange}
-                            />
-                        </div>
-                        <button type="submit" className="btn custom-button mt-3">
-                            Create Task
-                        </button>
-                        <Link to="/tasks" className="btn mt-3">
-                            Back to Tasks
-                        </Link>
-                    </form>
-                </div>
+        <div className="back-custom vh-100">
+            <div className="col-sm-12 col-lg-6 offset-lg-3 py-5">
+                <h1 className="font-weight-normal mb-5">
+                Create a task.
+                </h1>
+                <form onSubmit={(e) => submit(e)}>
+                    <div className="form-group">
+                        <label htmlFor="taskname">Name</label>
+                        <input
+                        type="text"
+                        name="name"
+                        id="taskname"
+                        className="form-control"
+                        required
+                        onChange={nameChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="taskdesc">Description</label>
+                        <input
+                        type="text"
+                        name="description"
+                        id="taskdesc"
+                        className="form-control"
+                        onChange={descChange}
+                        />
+                        <small id="tip" className="form-text text-muted">
+                        Optional: Describe the task!
+                        </small>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="taskdead">Deadline</label>
+                        <input
+                        type="date"
+                        name="deadline"
+                        id="taskdead"
+                        className="form-control"
+                        required
+                        onChange={deadChange}
+                        />
+                    </div>
+                    <button type="submit" className="btn custom-button mt-3">
+                        Create Task
+                    </button>
+                    <Link to="/tasks" className="btn mt-3 mx-3">
+                        Back to Tasks
+                    </Link>
+                </form>
             </div>
         </div>
     );

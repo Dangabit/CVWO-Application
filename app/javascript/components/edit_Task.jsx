@@ -60,57 +60,55 @@ function editTask() {
     }
 
     return (
-        <div className="container mt-5">
-            <div className="row">
-                <div className="col-sm-12 col-lg-6 offset-lg-3">
-                    <h1 className="font-weight-normal mb-5">
-                    Editting task {name}.
-                    </h1>
-                    <form onSubmit={(e) => submit(e)}>
-                        <div className="form-group">
-                            <label htmlFor="taskname">Name</label>
-                            <input
-                            type="text"
-                            name="name"
-                            id="taskname"
-                            className="form-control"
-                            onChange={nameChange}
-                            value={name}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="taskdesc">Description</label>
-                            <input
-                            type="text"
-                            name="description"
-                            id="taskdesc"
-                            className="form-control"
-                            onChange={descChange}
-                            value={description}
-                            />
-                            <small id="tip" className="form-text text-muted">
-                            Describe the task! Or formulate a plan!
-                            </small>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="taskdead">Deadline</label>
-                            <input
-                            type="date"
-                            name="deadline"
-                            id="taskdead"
-                            className="form-control"
-                            onChange={deadChange}
-                            value={deadline}
-                            />
-                        </div>
-                        <button type="submit" className="btn custom-button mt-3">
-                            Edit Task
-                        </button>
-                        <Link to={`/task/${id}`} className="btn mt-3">
-                            Back
-                        </Link>
-                    </form>
-                </div>
+        <div className="back-custom vh-100">
+            <div className="col-sm-12 col-lg-6 offset-lg-3 py-5">
+                <h1 className="font-weight-normal mb-5">
+                Editting: {name}
+                </h1>
+                <form onSubmit={(e) => submit(e)}>
+                    <div className="form-group">
+                        <label htmlFor="taskname">Name</label>
+                        <input
+                        type="text"
+                        name="name"
+                        id="taskname"
+                        className="form-control"
+                        onChange={nameChange}
+                        value={name}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="taskdesc">Description</label>
+                        <input
+                        type="text"
+                        name="description"
+                        id="taskdesc"
+                        className="form-control"
+                        onChange={descChange}
+                        value={description}
+                        />
+                        <small id="tip" className="form-text text-muted">
+                        Describe the task! Or formulate a plan!
+                        </small>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="taskdead">Deadline</label>
+                        <input
+                        type="date"
+                        name="deadline"
+                        id="taskdead"
+                        className="form-control"
+                        onChange={deadChange}
+                        value={deadline}
+                        />
+                    </div>
+                    <button type="submit" className="btn custom-button mt-3">
+                        Edit Task
+                    </button>
+                    <Link to={`/task/${id}`} className="btn mt-3 mx-3">
+                        Back
+                    </Link>
+                </form>
             </div>
         </div>
     );
